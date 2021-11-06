@@ -25,6 +25,8 @@ public class MotionEventTool : MonoBehaviour
 
     private AnimationClip currentClip = null;
 
+    public float CurrentFrame { get; private set; } = 0f;
+
     void Start()
     {
         motionClips = targetActorAnimator?.runtimeAnimatorController.animationClips;
@@ -52,14 +54,14 @@ public class MotionEventTool : MonoBehaviour
                 currentClip = motionClip;
                 PlaySamplingAnim(0f);
                 samplingPanel.SetSamplingClip(currentClip);
-                eventPanel.Setup(motionClip);
+                eventPanel.Setup(motionClip, this);
             }
 
             mli.Setup(clipName, () => {
                 currentClip = motionClip;
                 PlaySamplingAnim(0f);
                 samplingPanel.SetSamplingClip(currentClip);
-                eventPanel.Setup(motionClip);
+                eventPanel.Setup(motionClip, this);
             });
         }
 
@@ -77,6 +79,8 @@ public class MotionEventTool : MonoBehaviour
         }
 
         currentClip.SampleAnimation(samplingActor, targetFrame);
+
+        CurrentFrame = targetFrame;
     }
 
     

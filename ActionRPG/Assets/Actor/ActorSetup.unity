@@ -3057,8 +3057,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentFrame: {fileID: 655325878}
   eventData: {fileID: 141121146}
+  eventDataInput: {fileID: 326404604}
   deleteButton: {fileID: 1104779302}
   editButton: {fileID: 1575346851}
+  IsClonedObject: 0
 --- !u!1 &1390784139
 GameObject:
   m_ObjectHideFlags: 0
