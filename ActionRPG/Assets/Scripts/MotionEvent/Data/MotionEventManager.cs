@@ -4,37 +4,37 @@ using UnityEngine;
 
 public class MotionEventManager
 {
-    private static MotionEventManager instance = null;
-    public static MotionEventManager Instance
+    private static MotionEventManager inst = null;
+    public static MotionEventManager Inst
     {
         get
         {
-            if(instance == null)
+            if (inst == null)
             {
-                instance = new MotionEventManager();
+                inst = new MotionEventManager();
             }
 
-            return instance;
+            return inst;
         }
     }
 
     private MotionEventManager() { }
 
-    public void Execute(string[] dataList)
+    public void Execute(string[] dataList) 
     {
         if (dataList == null) { return; }
 
         foreach(var eventId in dataList)
         {
             uint targetEventId = 0U;
-            if(!uint.TryParse(eventId, out targetEventId))
+
+            if (!uint.TryParse(eventId, out targetEventId))
             {
-                Debug.LogError("Executed Fail Event ID:" + targetEventId);
+                Debug.LogError("Execution Fail Event ID:" + eventId);
                 continue;
             }
 
             Debug.Log("Executed Event ID:" + targetEventId);
         }
     }
-
 }

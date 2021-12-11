@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -32,6 +30,7 @@ public class MotionEventListItem : MonoBehaviour
         Edit,
         Apply
     }
+
     private EditState currentEditState = EditState.Edit;
 
     private void Awake()
@@ -74,10 +73,10 @@ public class MotionEventListItem : MonoBehaviour
 
         onDeleteEvent = onDeleteCallback;
 
-        SetUpDisplay();
+        SetupDisplay();
     }
 
-    private void SetUpDisplay()
+    private void SetupDisplay()
     {
         if (animEventData == null)
         {

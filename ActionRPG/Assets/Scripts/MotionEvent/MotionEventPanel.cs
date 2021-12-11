@@ -43,10 +43,14 @@ public class MotionEventPanel : MonoBehaviour
 
     private void OnSaveMotionEvent()
     {
+
 #if UNITY_EDITOR
+        
         UnityEditor.AnimationUtility.SetAnimationEvents(currentClip, clipEventList.ToArray());
         UnityEditor.EditorUtility.DisplayDialog("保存成功", "モーションイベントの保存完了", "閉じる");
+
 #endif
+
     }
 
     private void OnCreateNewEventButtonClick()
@@ -55,7 +59,7 @@ public class MotionEventPanel : MonoBehaviour
         {
             if (checkEvent.time == motionEventTool.CurrentFrame)
             {
-                Debug.LogError("新規イベント追加エラー：同フレームにイベントが存在しています");
+                Debug.LogError("新規イベント追加エラー : 同フレームにイベントが存在してます");
                 return;
             }
         }
@@ -69,11 +73,12 @@ public class MotionEventPanel : MonoBehaviour
         SetupMotionEventPanel(clipEventList.ToArray());
     }
 
-    public void Setup(AnimationClip clip,MotionEventTool tool)
+    public void Setup(AnimationClip clip, MotionEventTool tool)
     {
         currentClip = clip;
         motionEventTool = tool;
         clipEventList.Clear();
+
         if (currentClip != null)
         {
             var eventDatas = currentClip.events;
@@ -83,8 +88,8 @@ public class MotionEventPanel : MonoBehaviour
                 motionListItemScrollView.SetActive(false);
                 return;
             }
-            
             clipEventList.AddRange(eventDatas);
+
             SetupMotionEventPanel(eventDatas);
         }
     }

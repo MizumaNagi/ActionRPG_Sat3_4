@@ -25,7 +25,7 @@ public class MotionEventTool : MonoBehaviour
 
     private AnimationClip currentClip = null;
 
-    public float CurrentFrame { get; private set; } = 0f;
+    public float CurrentFrame { private set; get; } = 0f;
 
     void Start()
     {
